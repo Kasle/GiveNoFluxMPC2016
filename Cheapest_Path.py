@@ -25,7 +25,10 @@ class Point:
                                 temp.append([[self.startIndex[0]+i, self.startIndex[1]+j], self.csum])
         return temp
         
-temp0 = 100000000000000000
+temp0 = 0
+for i in mat:
+    for j in i:
+        temp0+=int(j)
 
 if inp == 1:
     print mat[0][0]        
@@ -34,7 +37,6 @@ else:
             _points.append(Point([0, i], [], 0))
           
     while len(_points)>0:
-        print "Working"
         new_points = []          
         for i in _points:
             t = i.makePoints()
@@ -47,9 +49,9 @@ else:
         
         for i in _points:
             if i.startIndex[0] == (inp-1):
-                if t.csum < temp0:
+                if i.csum < temp0:
                     temp0 = i.csum
-            else:
+            elif i.csum < temp0:
                 new_points.append(i)
         _points = new_points
-    print temp0
+print temp0
